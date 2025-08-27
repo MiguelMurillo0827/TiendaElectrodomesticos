@@ -160,6 +160,8 @@ public class ListTelevisor extends javax.swing.JFrame {
         List<Televisor> televisores = servicioElectrodomestico.listarTelevisores();
         DefaultTableModel model = (DefaultTableModel) jTableListTelevisor.getModel();
         
+        model.setRowCount(0);
+        
         for (Televisor t: televisores){
             
             model.addRow(new Object[]{t.getTamanoPantalla(),t.getResulucion(),t.getTipoPantalla(), t.getNombre(), t.getCodigo(),t.getAlto(),t.getAncho(),t.getLargo(),t.getColor(),

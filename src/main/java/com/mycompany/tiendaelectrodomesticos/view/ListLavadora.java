@@ -161,6 +161,8 @@ public class ListLavadora extends javax.swing.JFrame {
         List<Lavadora> lavadoras = servicioElectrodomestico.listarLavadoras();
         DefaultTableModel model = (DefaultTableModel) jTableListLavadora.getModel();
         
+        model.setRowCount(0);
+        
         for (Lavadora t: lavadoras){
             
             model.addRow(new Object[]{t.getCapacidadKg(),t.getConsumoAgua(), t.getNombre(), t.getCodigo(),t.getAlto(),t.getAncho(),t.getLargo(),t.getColor(),
