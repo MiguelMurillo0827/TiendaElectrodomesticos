@@ -117,6 +117,26 @@ public class DeleteLavadora extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel12.setText("Consumo Agua:");
 
+        txtNombreLavadora.setEditable(false);
+
+        txtColorLavadora.setEditable(false);
+
+        txtPrecioLavadora.setEditable(false);
+
+        txtMarcaLavadora.setEditable(false);
+
+        txtWattsLavadora.setEditable(false);
+
+        txtCapacidadLavadora.setEditable(false);
+
+        txtConsumoAguaLavadora.setEditable(false);
+
+        txtAltoLavadora.setEditable(false);
+
+        txtAnchoLavadora.setEditable(false);
+
+        txtLargoLavadora.setEditable(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -344,7 +364,7 @@ public class DeleteLavadora extends javax.swing.JFrame {
             txtWattsLavadora.setText(String.valueOf(lavadoraEncontrado.getWattsPorHora()));
         } else {
 
-            JOptionPane.showMessageDialog(this, "Televisor no existe");
+            JOptionPane.showMessageDialog(this, "Lavadora no existe");
         }
 
 

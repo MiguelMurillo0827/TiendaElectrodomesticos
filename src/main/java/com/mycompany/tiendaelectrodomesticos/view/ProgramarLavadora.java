@@ -55,7 +55,7 @@ public class ProgramarLavadora extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         txtHoraApagado = new javax.swing.JTextField();
-        txtHoraInicio1 = new javax.swing.JTextField();
+        txtHoraInicio = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         btnProgramarApagado = new javax.swing.JButton();
@@ -211,7 +211,7 @@ public class ProgramarLavadora extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel14)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtHoraInicio1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtHoraInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -269,7 +269,7 @@ public class ProgramarLavadora extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(txtHoraInicio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtHoraInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
@@ -382,19 +382,32 @@ public class ProgramarLavadora extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnProgramarApagadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProgramarApagadoActionPerformed
-        
+
         String hora = txtHoraApagado.getText();
+
+        if (!hora.matches("([01]\\d|2[0-3]):[0-5]\\d")) {
+            JOptionPane.showMessageDialog(this, "Formato inválido. Use HH:mm (ejemplo: 08:30, 23:45)", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
         Lavadora aProgramar = servicioElectrodomestico.BuscarLavadora(txtCodigoLavadoraBuscar.getText());
-        
         JOptionPane.showMessageDialog(this, aProgramar.programarApagadoAutomatico(hora));
-        
+
+
     }//GEN-LAST:event_btnProgramarApagadoActionPerformed
 
     private void btnProgramarInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProgramarInicioActionPerformed
-        String hora = txtHoraInicio1.getText();
+        String hora = txtHoraInicio.getText();
+
+
+        if (!hora.matches("([01]\\d|2[0-3]):[0-5]\\d")) {
+            JOptionPane.showMessageDialog(this, "Formato inválido. Ingrese la hora como HH:mm (ejemplo: 08:30, 23:45)", "Error", JOptionPane.ERROR_MESSAGE);
+            return; 
+        }
+
         Lavadora aProgramar = servicioElectrodomestico.BuscarLavadora(txtCodigoLavadoraBuscar.getText());
-        
         JOptionPane.showMessageDialog(this, aProgramar.programarInicio(hora));
+
     }//GEN-LAST:event_btnProgramarInicioActionPerformed
 
     /**
@@ -436,7 +449,7 @@ public class ProgramarLavadora extends javax.swing.JFrame {
     private javax.swing.JTextField txtColorLavadora;
     private javax.swing.JTextField txtConsumoAguaLavadora;
     private javax.swing.JTextField txtHoraApagado;
-    private javax.swing.JTextField txtHoraInicio1;
+    private javax.swing.JTextField txtHoraInicio;
     private javax.swing.JTextField txtLargoLavadora;
     private javax.swing.JTextField txtMarcaLavadora;
     private javax.swing.JTextField txtNombreLavadora;

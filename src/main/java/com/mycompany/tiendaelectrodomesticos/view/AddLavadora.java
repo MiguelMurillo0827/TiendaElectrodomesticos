@@ -1,9 +1,9 @@
 package com.mycompany.tiendaelectrodomesticos.view;
 
 import com.mycompany.tiendaelectrodomesticos.model.Lavadora;
-import com.mycompany.tiendaelectrodomesticos.model.Televisor;
 import com.mycompany.tiendaelectrodomesticos.service.IServicioElectrodomestico;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 public class AddLavadora extends javax.swing.JFrame {
 
@@ -54,7 +54,6 @@ public class AddLavadora extends javax.swing.JFrame {
         txtAltoLavadora = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -79,7 +78,7 @@ public class AddLavadora extends javax.swing.JFrame {
         setTitle("AddElectrodomestico");
         setResizable(false);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -243,13 +242,6 @@ public class AddLavadora extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Cargar Lavadora");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -260,8 +252,6 @@ public class AddLavadora extends javax.swing.JFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnGuardar)
-                        .addGap(87, 87, 87)
-                        .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnSalir)))
                 .addContainerGap())
@@ -274,8 +264,7 @@ public class AddLavadora extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
-                    .addComponent(jButton1))
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -284,6 +273,21 @@ public class AddLavadora extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         try {
+
+            JTextField[] campos = {
+                
+                txtNombreLavadora, txtCodigoLavadora, txtAltoLavadora,
+                txtAnchoLavadora, txtLargoLavadora, txtColorLavadora,
+                txtPrecioLavadora, txtMarcaLavadora, txtWattsLavadora,
+                txtCapacidadLavadora,txtConsumoAguaLavadora
+            };
+
+            for (JTextField campo : campos) {
+                if (campo.getText().trim().isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Por favor complete todos los campos.");
+                    return;
+                }
+            }
             double capacidadLavadora = Double.parseDouble(txtCapacidadLavadora.getText());
             double consumoAguaLavadora = Double.parseDouble(txtConsumoAguaLavadora.getText());
             String nombre = txtNombreLavadora.getText();
@@ -296,6 +300,11 @@ public class AddLavadora extends javax.swing.JFrame {
             String marca = txtMarcaLavadora.getText();
             double WattsPorHora = Double.parseDouble(txtWattsLavadora.getText());
 
+            if (servicioElectrodomestico.verificarNoRepetido(codigo)) {
+                JOptionPane.showMessageDialog(this, "Ya existe una lavadora con el código: " + codigo);
+                return;
+            }
+
             Lavadora lavadora = new Lavadora(
                     capacidadLavadora, consumoAguaLavadora, nombre, codigo,
                     alto, ancho, largo, color, precio, marca, WattsPorHora
@@ -303,7 +312,6 @@ public class AddLavadora extends javax.swing.JFrame {
             servicioElectrodomestico.adicionarElectrodomestico(lavadora);
             System.out.println(lavadora);
 
-            
             JOptionPane.showMessageDialog(this, "Lavadora creada correctamente.");
 
         } catch (NumberFormatException e) {
@@ -317,31 +325,6 @@ public class AddLavadora extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Lavadora lav1 = new Lavadora(
-                18.0, 120.0, "Lavadora UltraWash 3000", "LAV001",
-                105.0, 60.0, 65.0, "Blanco",
-                1200000.0, "LG", 800.0
-        );
-
-        Lavadora lav2 = new Lavadora(
-                12.0, 90.0, "Lavadora EcoWash Pro", "LAV002",
-                95.0, 55.0, 60.0, "Gris",
-                950000.0, "Samsung", 600.0
-        );
-
-        Lavadora lav3 = new Lavadora(
-                22.0, 150.0, "Lavadora MegaLoad Supreme", "LAV003",
-                120.0, 70.0, 75.0, "Negro",
-                1800000.0, "Whirlpool", 1000.0
-        );
-
-        servicioElectrodomestico.adicionarElectrodomestico(lav1);
-        servicioElectrodomestico.adicionarElectrodomestico(lav2);
-        servicioElectrodomestico.adicionarElectrodomestico(lav3);
-
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -349,7 +332,6 @@ public class AddLavadora extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

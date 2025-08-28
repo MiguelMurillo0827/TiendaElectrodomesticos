@@ -352,7 +352,7 @@ public class EditTelevisor extends javax.swing.JFrame {
                     nombre, alto, ancho, largo, color, precio, marca, WattsPorHora, tipoControl,alcanceControl
             );
 
-            // ✅ Mensaje de confirmación
+            
             JOptionPane.showMessageDialog(this, "Televisor actualizado correctamente.");
 
         } catch (NumberFormatException e) {
