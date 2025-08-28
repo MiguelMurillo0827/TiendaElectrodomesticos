@@ -101,8 +101,8 @@ public abstract class Electrodomestico {
         this.wattsPorHora = wattsPorHora;
     }
     
-    public double calcularConsumoMensual(){
-        return this.wattsPorHora*24*30; //Calcular el total de vatios del electrodomestico teniendo en cuenta que esta encedido todo el día
+    public double calcularConsumoMensual(double dias){
+        return this.wattsPorHora*24*dias; //Calcular el total de vatios del electrodomestico teniendo en cuenta que esta encedido todo el día
     }  
     
     @Override

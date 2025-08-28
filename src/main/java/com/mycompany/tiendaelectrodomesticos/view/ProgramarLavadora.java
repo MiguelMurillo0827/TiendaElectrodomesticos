@@ -371,7 +371,7 @@ public class ProgramarLavadora extends javax.swing.JFrame {
             txtWattsLavadora.setText(String.valueOf(lavadoraEncontrado.getWattsPorHora()));
         } else {
 
-            JOptionPane.showMessageDialog(this, "Televisor no existe");
+            JOptionPane.showMessageDialog(this, "Lavadora no existe");
         }
 
 

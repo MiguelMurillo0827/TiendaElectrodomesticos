@@ -5,16 +5,16 @@ import com.mycompany.tiendaelectrodomesticos.service.IServicioElectrodomestico;
 import javax.swing.JOptionPane;
 
 public class DeleteTelevisor extends javax.swing.JFrame {
-
+    
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DeleteTelevisor.class.getName());
     private IServicioElectrodomestico servicioElectrodomestico;
-
+    
     public DeleteTelevisor(IServicioElectrodomestico servicioElectrodomestico) {
         this.servicioElectrodomestico = servicioElectrodomestico;
         initComponents();
         setLocationRelativeTo(null);
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -55,8 +55,8 @@ public class DeleteTelevisor extends javax.swing.JFrame {
         txtAnchoTelevisor = new javax.swing.JTextField();
         txtLargoTelevisor = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        txtTipoPantallaTelevisor1 = new javax.swing.JTextField();
-        txtTipoPantallaTelevisor2 = new javax.swing.JTextField();
+        txtAlcanceControl = new javax.swing.JTextField();
+        txtTipoControl = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
         btnBuscar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
@@ -85,7 +85,7 @@ public class DeleteTelevisor extends javax.swing.JFrame {
         setTitle("AddElectrodomestico");
         setResizable(false);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -127,11 +127,37 @@ public class DeleteTelevisor extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel13.setText("Tipo Pantalla:");
 
+        txtNombreTelevisor.setEditable(false);
+
+        txtColorTelevisor.setEditable(false);
+
+        txtPrecioTelevisor.setEditable(false);
+
+        txtMarcaTelevisor.setEditable(false);
+
+        txtWattsTelevisor.setEditable(false);
+
+        txtTamanoPantallaTelevisor.setEditable(false);
+
+        txtResolucionTelevisor.setEditable(false);
+
+        txtTipoPantallaTelevisor.setEditable(false);
+
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel14.setText("Tipo Control:");
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel15.setText("Alcance Control:");
+
+        txtAltoTelevisor.setEditable(false);
+
+        txtAnchoTelevisor.setEditable(false);
+
+        txtLargoTelevisor.setEditable(false);
+
+        txtAlcanceControl.setEditable(false);
+
+        txtTipoControl.setEditable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -198,11 +224,11 @@ public class DeleteTelevisor extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel14)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtTipoPantallaTelevisor2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtTipoControl, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel15)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtTipoPantallaTelevisor1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtAlcanceControl, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 27, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -266,11 +292,11 @@ public class DeleteTelevisor extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(txtTipoPantallaTelevisor2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTipoControl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(txtTipoPantallaTelevisor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAlcanceControl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -305,7 +331,7 @@ public class DeleteTelevisor extends javax.swing.JFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnBuscar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(105, 105, 105)
                         .addComponent(btnEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnSalir)))
@@ -328,31 +354,47 @@ public class DeleteTelevisor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        servicioElectrodomestico.eliminarTelevisor(txtCodigoTelevisorBuscar.getText());
-        JOptionPane.showMessageDialog(this, "Televisor eliminado con éxito");
+        
+        if (txtCodigoTelevisorBuscar.getText().equals("")){
+        JOptionPane.showMessageDialog(this, "Por favor ingrese el código del televisor que desea eliminar");
+        return;
+        }
+ 
+        if (!servicioElectrodomestico.eliminarTelevisor(txtCodigoTelevisorBuscar.getText())){
+        
+            JOptionPane.showMessageDialog(this, "Televisor no existe");
+            return;
+        }
+        
         txtAltoTelevisor.setText("");
-
+        
         txtAnchoTelevisor.setText("");
-
+        
         txtCodigoTelevisorBuscar.setText("");
-
+        
         txtColorTelevisor.setText("");
-
+        
         txtLargoTelevisor.setText("");
-
+        
         txtMarcaTelevisor.setText("");
-
+        
         txtNombreTelevisor.setText("");
-
+        
         txtPrecioTelevisor.setText("");
-
+        
         txtResolucionTelevisor.setText("");
-
+        
         txtTamanoPantallaTelevisor.setText("");
-
+        
         txtTipoPantallaTelevisor.setText("");
-
+        
         txtWattsTelevisor.setText("");
+        
+        txtAlcanceControl.setText("");
+        
+        txtTipoControl.setText("");
+        
+        JOptionPane.showMessageDialog(this, "Televisor eliminado con éxito");
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -360,37 +402,49 @@ public class DeleteTelevisor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        
+         if (txtCodigoTelevisorBuscar.getText().equals("")){
+        JOptionPane.showMessageDialog(this, "Por favor ingrese el código del televisor que desea buscar");
+        return;
+        }
+        
         String codigo = txtCodigoTelevisorBuscar.getText();
-
+        
         Televisor televisorEncontrado = servicioElectrodomestico.BuscarTelevisor(codigo);
-
+        
         if (televisorEncontrado != null) {
-
+            
             txtAltoTelevisor.setText(String.valueOf(televisorEncontrado.getAlto()));
-
+            
             txtAnchoTelevisor.setText(String.valueOf(televisorEncontrado.getAncho()));
-
+            
             txtCodigoTelevisorBuscar.setText(televisorEncontrado.getCodigo());
-
+            
             txtColorTelevisor.setText(televisorEncontrado.getColor());
-
+            
             txtLargoTelevisor.setText(String.valueOf(televisorEncontrado.getLargo()));
-
+            
             txtMarcaTelevisor.setText(televisorEncontrado.getMarca());
-
+            
             txtNombreTelevisor.setText(televisorEncontrado.getNombre());
-
+            
             txtPrecioTelevisor.setText(String.valueOf(televisorEncontrado.getPrecio()));
-
+            
             txtResolucionTelevisor.setText(televisorEncontrado.getResulucion());
-
+            
             txtTamanoPantallaTelevisor.setText(String.valueOf(televisorEncontrado.getTamanoPantalla()));
-
+            
             txtTipoPantallaTelevisor.setText(televisorEncontrado.getTipoPantalla());
-
+            
             txtWattsTelevisor.setText(String.valueOf(televisorEncontrado.getWattsPorHora()));
+            
+            txtTipoControl.setText(televisorEncontrado.getControl().getTipo());
+            
+            txtAlcanceControl.setText (String.valueOf(televisorEncontrado.getControl().getAlcance()));
+            
+            
         } else {
-
+            
             JOptionPane.showMessageDialog(this, "Televisor no existe");
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
@@ -425,6 +479,7 @@ public class DeleteTelevisor extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField txtAlcanceControl;
     private javax.swing.JTextField txtAltoTelevisor;
     private javax.swing.JTextField txtAnchoTelevisor;
     private javax.swing.JTextField txtCodigoTelevisorBuscar;
@@ -435,9 +490,8 @@ public class DeleteTelevisor extends javax.swing.JFrame {
     private javax.swing.JTextField txtPrecioTelevisor;
     private javax.swing.JTextField txtResolucionTelevisor;
     private javax.swing.JTextField txtTamanoPantallaTelevisor;
+    private javax.swing.JTextField txtTipoControl;
     private javax.swing.JTextField txtTipoPantallaTelevisor;
-    private javax.swing.JTextField txtTipoPantallaTelevisor1;
-    private javax.swing.JTextField txtTipoPantallaTelevisor2;
     private javax.swing.JTextField txtWattsTelevisor;
     // End of variables declaration//GEN-END:variables
 }

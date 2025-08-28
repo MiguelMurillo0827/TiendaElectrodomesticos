@@ -1,23 +1,23 @@
-
 package com.mycompany.tiendaelectrodomesticos.view;
 
 import com.mycompany.tiendaelectrodomesticos.model.Electrodomestico;
 import com.mycompany.tiendaelectrodomesticos.model.Televisor;
 import com.mycompany.tiendaelectrodomesticos.service.IServicioElectrodomestico;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
 public class ListTelevisor extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ListTelevisor.class.getName());
     private IServicioElectrodomestico servicioElectrodomestico;
+
     public ListTelevisor(IServicioElectrodomestico servicioElectrodomestico) {
-        
+
         this.servicioElectrodomestico = servicioElectrodomestico;
         initComponents();
         setLocationRelativeTo(null);
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -60,7 +60,7 @@ public class ListTelevisor extends javax.swing.JFrame {
         setTitle("AddElectrodomestico");
         setResizable(false);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -71,11 +71,11 @@ public class ListTelevisor extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Tamano Pantalla", "Resolucion", "Tipo pantalla", "Nombre", "Codigo", "Alto", "Ancho", "Largo", "Color", "Precio", "Marca", "Watts Por Hora"
+                "Tamano Pantalla", "Resolucion", "Tipo pantalla", "Nombre", "Codigo", "Alto", "Ancho", "Largo", "Color", "Precio", "Marca", "Watts Por Hora", "Tipo control", "Alcance control"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Double.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class, java.lang.Double.class
+                java.lang.Double.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class, java.lang.Double.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -85,8 +85,12 @@ public class ListTelevisor extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTableListTelevisor);
         if (jTableListTelevisor.getColumnModel().getColumnCount() > 0) {
             jTableListTelevisor.getColumnModel().getColumn(0).setMinWidth(100);
+            jTableListTelevisor.getColumnModel().getColumn(1).setMinWidth(80);
             jTableListTelevisor.getColumnModel().getColumn(2).setMinWidth(100);
-            jTableListTelevisor.getColumnModel().getColumn(11).setMinWidth(150);
+            jTableListTelevisor.getColumnModel().getColumn(3).setPreferredWidth(100);
+            jTableListTelevisor.getColumnModel().getColumn(11).setMinWidth(100);
+            jTableListTelevisor.getColumnModel().getColumn(12).setMinWidth(80);
+            jTableListTelevisor.getColumnModel().getColumn(13).setPreferredWidth(120);
         }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -137,7 +141,7 @@ public class ListTelevisor extends javax.swing.JFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnListar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 820, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 974, Short.MAX_VALUE)
                         .addComponent(btnSalir)))
                 .addContainerGap())
         );
@@ -159,14 +163,21 @@ public class ListTelevisor extends javax.swing.JFrame {
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
         List<Televisor> televisores = servicioElectrodomestico.listarTelevisores();
         DefaultTableModel model = (DefaultTableModel) jTableListTelevisor.getModel();
-        
+
         model.setRowCount(0);
-        
-        for (Televisor t: televisores){
-            
-            model.addRow(new Object[]{t.getTamanoPantalla(),t.getResulucion(),t.getTipoPantalla(), t.getNombre(), t.getCodigo(),t.getAlto(),t.getAncho(),t.getLargo(),t.getColor(),
-            t.getPrecio(),t.getMarca(),t.getWattsPorHora()});
-          
+
+        model.setRowCount(0);
+
+        if (televisores.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay televisores para listar.");
+            return;
+        }
+
+        for (Televisor t : televisores) {
+
+            model.addRow(new Object[]{t.getTamanoPantalla(), t.getResulucion(), t.getTipoPantalla(), t.getNombre(), t.getCodigo(), t.getAlto(), t.getAncho(), t.getLargo(), t.getColor(),
+                t.getPrecio(), t.getMarca(), t.getWattsPorHora(), t.getControl().getTipo(), t.getControl().getAlcance()});
+
         }
     }//GEN-LAST:event_btnListarActionPerformed
 

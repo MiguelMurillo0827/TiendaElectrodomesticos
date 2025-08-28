@@ -28,8 +28,8 @@ public class Lavadora extends Electrodomestico implements IProgramable {
     }
 
     @Override
-    public double calcularConsumoMensual() {
-        return getWattsPorHora() * 2 * 8; //Consumo cada 2 días por semana
+    public double calcularConsumoMensual(double dias) {
+        return getWattsPorHora() * 2 * dias; //Consumo cada 2 días por semana
     }
 
     @Override

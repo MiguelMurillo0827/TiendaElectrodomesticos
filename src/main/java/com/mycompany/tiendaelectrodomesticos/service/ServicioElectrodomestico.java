@@ -14,6 +14,9 @@ public class ServicioElectrodomestico implements IServicioElectrodomestico {
     public void adicionarElectrodomestico(Electrodomestico elc) {
         electrodomesticos.add(elc);
     }
+    
+    
+    
 
     public Electrodomestico buscarElectrodomestico(String codigo) {
         for (Electrodomestico elc : electrodomesticos) {
@@ -83,9 +86,14 @@ public class ServicioElectrodomestico implements IServicioElectrodomestico {
     }
 
     @Override
-    public void eliminarTelevisor(String codigo) {
+    public boolean eliminarTelevisor(String codigo) {
+        
         Televisor t = (Televisor) buscarElectrodomestico(codigo);
+        if (t !=null){
         electrodomesticos.remove(t);
+        return true;
+        }
+        return false;
     }
 
     @Override
@@ -95,7 +103,8 @@ public class ServicioElectrodomestico implements IServicioElectrodomestico {
     }
 
     @Override
-    public void actualizarTelevisor(String codigo, double tamanoPantalla, String resulucion, String tipoPantalla, String nombre, double alto, double ancho, double largo, String color, double precio, String marca, double wattsPorHora) {
+    public void actualizarTelevisor(String codigo, double tamanoPantalla, String resulucion, String tipoPantalla, String nombre,
+            double alto, double ancho, double largo, String color, double precio, String marca, double wattsPorHora, String tipoControl, double alcance) {
 
         List<Televisor> televisores = listarTelevisores();
 
@@ -114,6 +123,9 @@ public class ServicioElectrodomestico implements IServicioElectrodomestico {
                 t.setTamanoPantalla(tamanoPantalla);
                 t.setTipoPantalla(tipoPantalla);
                 t.setWattsPorHora(wattsPorHora);
+                
+                t.getControl().setAlcance(alcance);
+                t.getControl().setTipo(tipoControl);
             }
         }
     }
@@ -139,6 +151,16 @@ public class ServicioElectrodomestico implements IServicioElectrodomestico {
                 t.setWattsPorHora(wattsPorHora);
             }
         }
+    }
+
+    @Override
+    public boolean verificarNoRepetido(String codigo) {
+        for (Electrodomestico e : electrodomesticos) {
+        if (e.getCodigo().equalsIgnoreCase(codigo)) {
+            return true;
+        }
+    }
+    return false;
     }
 
 }

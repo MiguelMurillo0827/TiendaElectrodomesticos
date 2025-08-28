@@ -55,8 +55,8 @@ public class EditTelevisor extends javax.swing.JFrame {
         txtAnchoTelevisor = new javax.swing.JTextField();
         txtLargoTelevisor = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        txtTipoPantallaTelevisor1 = new javax.swing.JTextField();
-        txtTipoPantallaTelevisor2 = new javax.swing.JTextField();
+        txtAlcanceControl = new javax.swing.JTextField();
+        txtTipoControl = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
         btnBuscar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
@@ -85,11 +85,11 @@ public class EditTelevisor extends javax.swing.JFrame {
         setTitle("AddElectrodomestico");
         setResizable(false);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Atualizar Televisor");
+        jLabel1.setText("Actualizar Televisor");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Codigo Televisor Buscar:");
@@ -195,14 +195,15 @@ public class EditTelevisor extends javax.swing.JFrame {
                                 .addComponent(jLabel13)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtTipoPantallaTelevisor, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel14)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtTipoPantallaTelevisor2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel15)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtTipoPantallaTelevisor1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel14)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtTipoControl, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel15)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtAlcanceControl, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 27, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -266,11 +267,11 @@ public class EditTelevisor extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(txtTipoPantallaTelevisor2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTipoControl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(txtTipoPantallaTelevisor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAlcanceControl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -342,10 +343,13 @@ public class EditTelevisor extends javax.swing.JFrame {
             double precio = Double.parseDouble(txtPrecioTelevisor.getText());
             String marca = txtMarcaTelevisor.getText();
             double WattsPorHora = Double.parseDouble(txtWattsTelevisor.getText());
+            String tipoControl = txtTipoControl.getText();
+            double alcanceControl = Double.parseDouble(txtAlcanceControl.getText());
+            
 
             servicioElectrodomestico.actualizarTelevisor(
                     codigo, tamanoPantalla, resolucion, tipoPantalla,
-                    nombre, alto, ancho, largo, color, precio, marca, WattsPorHora
+                    nombre, alto, ancho, largo, color, precio, marca, WattsPorHora, tipoControl,alcanceControl
             );
 
             // ✅ Mensaje de confirmación
@@ -394,6 +398,10 @@ public class EditTelevisor extends javax.swing.JFrame {
             txtTipoPantallaTelevisor.setText(televisorEncontrado.getTipoPantalla());
 
             txtWattsTelevisor.setText(String.valueOf(televisorEncontrado.getWattsPorHora()));
+            
+            txtAlcanceControl.setText(String.valueOf(televisorEncontrado.getControl().getAlcance()));
+            
+            txtTipoControl.setText(televisorEncontrado.getControl().getTipo());
         } else {
 
             JOptionPane.showMessageDialog(this, "Televisor no existe");
@@ -430,6 +438,7 @@ public class EditTelevisor extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField txtAlcanceControl;
     private javax.swing.JTextField txtAltoTelevisor;
     private javax.swing.JTextField txtAnchoTelevisor;
     private javax.swing.JTextField txtCodigoTelevisorBuscar;
@@ -440,9 +449,8 @@ public class EditTelevisor extends javax.swing.JFrame {
     private javax.swing.JTextField txtPrecioTelevisor;
     private javax.swing.JTextField txtResolucionTelevisor;
     private javax.swing.JTextField txtTamanoPantallaTelevisor;
+    private javax.swing.JTextField txtTipoControl;
     private javax.swing.JTextField txtTipoPantallaTelevisor;
-    private javax.swing.JTextField txtTipoPantallaTelevisor1;
-    private javax.swing.JTextField txtTipoPantallaTelevisor2;
     private javax.swing.JTextField txtWattsTelevisor;
     // End of variables declaration//GEN-END:variables
 }

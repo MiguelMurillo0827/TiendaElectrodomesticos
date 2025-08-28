@@ -1,21 +1,20 @@
-
 package com.mycompany.tiendaelectrodomesticos.view;
 
 import com.mycompany.tiendaelectrodomesticos.model.Televisor;
 import com.mycompany.tiendaelectrodomesticos.service.IServicioElectrodomestico;
 import javax.swing.JOptionPane;
 
-
 public class SearchTelevisor extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(SearchTelevisor.class.getName());
     private IServicioElectrodomestico servicioElectrodomestico;
+
     public SearchTelevisor(IServicioElectrodomestico servicioElectrodomestico) {
         this.servicioElectrodomestico = servicioElectrodomestico;
         initComponents();
         setLocationRelativeTo(null);
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -65,8 +64,10 @@ public class SearchTelevisor extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        txtAlcanceControlTelevisor1 = new javax.swing.JTextField();
-        btnBuscar1 = new javax.swing.JButton();
+        txtCantidadDias = new javax.swing.JTextField();
+        btnCalcular = new javax.swing.JButton();
+        jLabel19 = new javax.swing.JLabel();
+        txtTotalConsumo = new javax.swing.JTextField();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -133,8 +134,34 @@ public class SearchTelevisor extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel13.setText("Tipo Pantalla:");
 
+        txtNombreTelevisor.setEditable(false);
+
+        txtColorTelevisor.setEditable(false);
+
+        txtPrecioTelevisor.setEditable(false);
+
+        txtMarcaTelevisor.setEditable(false);
+
+        txtWattsTelevisor.setEditable(false);
+
+        txtTamanoPantallaTelevisor.setEditable(false);
+
+        txtResolucionTelevisor.setEditable(false);
+
+        txtTipoPantallaTelevisor.setEditable(false);
+
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel14.setText("Tipo Control:");
+
+        txtAltoTelevisor.setEditable(false);
+
+        txtAnchoTelevisor.setEditable(false);
+
+        txtLargoTelevisor.setEditable(false);
+
+        txtTipoControlTelevisor.setEditable(false);
+
+        txtAlcanceControlTelevisor.setEditable(false);
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel16.setText("Alcance Control:");
@@ -301,12 +328,15 @@ public class SearchTelevisor extends javax.swing.JFrame {
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel18.setText("Cantidad de días a calcular: ");
 
-        btnBuscar1.setText("Calcular");
-        btnBuscar1.addActionListener(new java.awt.event.ActionListener() {
+        btnCalcular.setText("Calcular");
+        btnCalcular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscar1ActionPerformed(evt);
+                btnCalcularActionPerformed(evt);
             }
         });
+
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel19.setText("Total Kw consumidos");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -317,25 +347,31 @@ public class SearchTelevisor extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnBuscar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnSalir))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel17)))
+                        .addComponent(btnBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSalir)
                         .addGap(73, 73, 73))
                     .addComponent(jSeparator5)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel15)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel18)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel19)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtTotalConsumo, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtCantidadDias, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtAlcanceControlTelevisor1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(btnBuscar1)
-                        .addGap(143, 143, 143)))
+                        .addComponent(btnCalcular)
+                        .addGap(164, 164, 164))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel17)
+                        .addGap(86, 86, 86)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -354,11 +390,15 @@ public class SearchTelevisor extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(txtAlcanceControlTelevisor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar1))
+                    .addComponent(txtCantidadDias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCalcular))
                 .addGap(0, 0, 0)
                 .addComponent(jLabel15)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(txtTotalConsumo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15))
         );
 
         pack();
@@ -366,15 +406,14 @@ public class SearchTelevisor extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         
-        String codigo=  txtCodigoTelevisorBuscar.getText();
+        String codigo = txtCodigoTelevisorBuscar.getText();
         
-        Televisor televisorEncontrado=  servicioElectrodomestico.BuscarTelevisor(codigo);
+        Televisor televisorEncontrado = servicioElectrodomestico.BuscarTelevisor(codigo);
         
-        if (televisorEncontrado != null){
-        
-        
+        if (televisorEncontrado != null) {
+            
             txtAltoTelevisor.setText(String.valueOf(televisorEncontrado.getAlto()));
-        
+            
             txtAnchoTelevisor.setText(String.valueOf(televisorEncontrado.getAncho()));
             
             txtCodigoTelevisorBuscar.setText(televisorEncontrado.getCodigo());
@@ -396,23 +435,42 @@ public class SearchTelevisor extends javax.swing.JFrame {
             txtTipoPantallaTelevisor.setText(televisorEncontrado.getTipoPantalla());
             
             txtWattsTelevisor.setText(String.valueOf(televisorEncontrado.getWattsPorHora()));
-        }
-        
-        else{
+            
+            txtAlcanceControlTelevisor.setText(String.valueOf(televisorEncontrado.getControl().getAlcance()));
+            
+            txtTipoControlTelevisor.setText(televisorEncontrado.getControl().getTipo());
+            
+            
+            
+        } else {
             
             JOptionPane.showMessageDialog(this, "Televisor no existe");
         }
         
-        
+
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void btnBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscar1ActionPerformed
+    private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
+        
+        String codigo = txtCodigoTelevisorBuscar.getText();
+        Televisor televisorEncontrado = servicioElectrodomestico.BuscarTelevisor(codigo);
+        
+        if(televisorEncontrado != null){
+            
+        txtTotalConsumo.setText(String.valueOf(televisorEncontrado.calcularConsumoMensual(Double.parseDouble(txtCantidadDias.getText()))));
+        
+        }
+        
+        else{
+        
+        JOptionPane.showMessageDialog(this, "Busque primero un televisor");
+        
+        }
+    }//GEN-LAST:event_btnCalcularActionPerformed
 
     /**
      * @param args the command line arguments
@@ -420,7 +478,7 @@ public class SearchTelevisor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnBuscar1;
+    private javax.swing.JButton btnCalcular;
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -432,6 +490,7 @@ public class SearchTelevisor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -452,9 +511,9 @@ public class SearchTelevisor extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField txtAlcanceControlTelevisor;
-    private javax.swing.JTextField txtAlcanceControlTelevisor1;
     private javax.swing.JTextField txtAltoTelevisor;
     private javax.swing.JTextField txtAnchoTelevisor;
+    private javax.swing.JTextField txtCantidadDias;
     private javax.swing.JTextField txtCodigoTelevisorBuscar;
     private javax.swing.JTextField txtColorTelevisor;
     private javax.swing.JTextField txtLargoTelevisor;
@@ -465,6 +524,7 @@ public class SearchTelevisor extends javax.swing.JFrame {
     private javax.swing.JTextField txtTamanoPantallaTelevisor;
     private javax.swing.JTextField txtTipoControlTelevisor;
     private javax.swing.JTextField txtTipoPantallaTelevisor;
+    private javax.swing.JTextField txtTotalConsumo;
     private javax.swing.JTextField txtWattsTelevisor;
     // End of variables declaration//GEN-END:variables
 }

@@ -19,6 +19,7 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu5 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMenuItemAddTelevisor = new javax.swing.JMenuItem();
@@ -39,6 +40,11 @@ public class Principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Principal");
         setResizable(false);
+
+        jMenu5.setText("Archivo");
+        jMenu5.setAutoscrolls(true);
+        jMenu5.setVerifyInputWhenFocusTarget(false);
+        jMenuBar1.add(jMenu5);
 
         jMenu1.setText("Producto");
 
@@ -244,6 +250,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItemAddLavadora;
