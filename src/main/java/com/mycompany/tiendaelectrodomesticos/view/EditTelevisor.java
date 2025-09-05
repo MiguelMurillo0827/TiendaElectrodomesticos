@@ -345,11 +345,10 @@ public class EditTelevisor extends javax.swing.JFrame {
             double WattsPorHora = Double.parseDouble(txtWattsTelevisor.getText());
             String tipoControl = txtTipoControl.getText();
             double alcanceControl = Double.parseDouble(txtAlcanceControl.getText());
-            
 
             servicioElectrodomestico.actualizarTelevisor(
                     codigo, tamanoPantalla, resolucion, tipoPantalla,
-                    nombre, alto, ancho, largo, color, precio, marca, WattsPorHora, tipoControl,alcanceControl
+                    nombre, alto, ancho, largo, color, precio, marca, WattsPorHora, tipoControl, alcanceControl
             );
 
             // ✅ Mensaje de confirmación
@@ -371,7 +370,7 @@ public class EditTelevisor extends javax.swing.JFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         String codigo = txtCodigoTelevisorBuscar.getText();
 
-        Televisor televisorEncontrado = servicioElectrodomestico.BuscarTelevisor(codigo);
+        Televisor televisorEncontrado = (Televisor) servicioElectrodomestico.buscarElectrodomestico(codigo);
 
         if (televisorEncontrado != null) {
 
@@ -398,9 +397,9 @@ public class EditTelevisor extends javax.swing.JFrame {
             txtTipoPantallaTelevisor.setText(televisorEncontrado.getTipoPantalla());
 
             txtWattsTelevisor.setText(String.valueOf(televisorEncontrado.getWattsPorHora()));
-            
+
             txtAlcanceControl.setText(String.valueOf(televisorEncontrado.getControl().getAlcance()));
-            
+
             txtTipoControl.setText(televisorEncontrado.getControl().getTipo());
         } else {
 

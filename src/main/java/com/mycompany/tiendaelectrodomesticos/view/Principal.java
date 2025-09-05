@@ -7,12 +7,12 @@ import javax.swing.JOptionPane;
 public class Principal extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Principal.class.getName());
-    IServicioElectrodomestico servicioElectrodomestico = new ServicioElectrodomestico();
+    IServicioElectrodomestico servicioElectrodomestico = ServicioElectrodomestico.getInstance();
+
     public Principal() {
         initComponents();
         setLocationRelativeTo(null);
     }
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -178,10 +178,10 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-       JOptionPane.showMessageDialog(
-    this,
-    "Desarrollado por:\nJuan Manuel Blandón Ramirez\nJaminton Julian Leyton Camacho\nMiguel Angel Murillo De Los Rios\nDavid Estiven Mendez Lara"
-);
+        JOptionPane.showMessageDialog(
+                this,
+                "Desarrollado por:\nJuan Manuel Blandón Ramirez\nJaminton Julian Leyton Camacho\nMiguel Angel Murillo De Los Rios\nDavid Estiven Mendez Lara"
+        );
 
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
@@ -201,38 +201,38 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemEditTelevisorActionPerformed
 
     private void jMenuItemListTelevisorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListTelevisorActionPerformed
-       ListTelevisor gui = new ListTelevisor(servicioElectrodomestico);
-       gui.setVisible(true);
+        ListTelevisor gui = new ListTelevisor(servicioElectrodomestico);
+        gui.setVisible(true);
     }//GEN-LAST:event_jMenuItemListTelevisorActionPerformed
 
     private void jMenuItemDeleteTelevisorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDeleteTelevisorActionPerformed
-       DeleteTelevisor gui = new DeleteTelevisor(servicioElectrodomestico);
-       gui.setVisible(true);
+        DeleteTelevisor gui = new DeleteTelevisor(servicioElectrodomestico);
+        gui.setVisible(true);
     }//GEN-LAST:event_jMenuItemDeleteTelevisorActionPerformed
 
     private void jMenuItemDeleteLavadoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDeleteLavadoraActionPerformed
-       DeleteLavadora gui = new DeleteLavadora(servicioElectrodomestico);
-       gui.setVisible(true);
+        DeleteLavadora gui = new DeleteLavadora(servicioElectrodomestico);
+        gui.setVisible(true);
     }//GEN-LAST:event_jMenuItemDeleteLavadoraActionPerformed
 
     private void jMenuItemListLavadoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListLavadoraActionPerformed
-       ListLavadora gui = new ListLavadora(servicioElectrodomestico);
-       gui.setVisible(true);
+        ListLavadora gui = new ListLavadora(servicioElectrodomestico);
+        gui.setVisible(true);
     }//GEN-LAST:event_jMenuItemListLavadoraActionPerformed
 
     private void jMenuItemEditLavadoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEditLavadoraActionPerformed
-       EditLavadora gui = new EditLavadora(servicioElectrodomestico);
-       gui.setVisible(true);
+        EditLavadora gui = new EditLavadora(servicioElectrodomestico);
+        gui.setVisible(true);
     }//GEN-LAST:event_jMenuItemEditLavadoraActionPerformed
 
     private void jMenuItemSearchLavadoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSearchLavadoraActionPerformed
-       SearchLavadora gui = new SearchLavadora(servicioElectrodomestico);
-       gui.setVisible(true);
+        SearchLavadora gui = new SearchLavadora(servicioElectrodomestico);
+        gui.setVisible(true);
     }//GEN-LAST:event_jMenuItemSearchLavadoraActionPerformed
 
     private void jMenuItemAddLavadoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAddLavadoraActionPerformed
-       AddLavadora gui = new AddLavadora(servicioElectrodomestico);
-       gui.setVisible(true);
+        AddLavadora gui = new AddLavadora(servicioElectrodomestico);
+        gui.setVisible(true);
     }//GEN-LAST:event_jMenuItemAddLavadoraActionPerformed
 
     private void jMenuItemProgramarLavadoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProgramarLavadoraActionPerformed
@@ -243,7 +243,6 @@ public class Principal extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;

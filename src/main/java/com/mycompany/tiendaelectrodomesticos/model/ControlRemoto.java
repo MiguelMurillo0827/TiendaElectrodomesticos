@@ -8,16 +8,12 @@ package com.mycompany.tiendaelectrodomesticos.model;
  *
  * @author juanm
  */
-
-
-
 public class ControlRemoto {
-    
+
     private String tipo;
     private double alcance;
     private Televisor televisor;
-    
-    
+
     public ControlRemoto(String tipo, double alcance, Televisor televisor) {
         this.tipo = tipo;
         this.alcance = alcance;
@@ -26,8 +22,7 @@ public class ControlRemoto {
 
     public ControlRemoto() {
     }
-    
-    
+
     public String getTipo() {
         return tipo;
     }
@@ -52,5 +47,4 @@ public class ControlRemoto {
         this.alcance = alcance;
     }
 
-    
 }

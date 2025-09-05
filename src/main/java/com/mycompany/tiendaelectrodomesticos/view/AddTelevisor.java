@@ -357,8 +357,6 @@ public class AddTelevisor extends javax.swing.JFrame {
                 }
             }
 
-            
-
             double tamanoPantalla = Double.parseDouble(txtTamanoPantallaTelevisor.getText());
             String resolucion = txtResolucionTelevisor.getText();
             String tipoPantalla = txtTipoPantallaTelevisor.getText();
@@ -373,26 +371,19 @@ public class AddTelevisor extends javax.swing.JFrame {
             double WattsPorHora = Double.parseDouble(txtWattsTelevisor.getText());
             String tipoControl = txtTipoControlTelevisor.getText();
             double alcance = Double.parseDouble(txtAlcanceControlTelevisor.getText());
-            
+
             if (servicioElectrodomestico.verificarNoRepetido(codigo)) {
                 JOptionPane.showMessageDialog(this, "Ya existe un televisor con el código: " + codigo);
                 return;
             }
-            
-            
-            ControlRemoto control1 = new ControlRemoto(tipoControl, alcance, null);
-            
 
-            
-            
-            
-            
+            ControlRemoto control1 = new ControlRemoto(tipoControl, alcance, null);
+
             Televisor televisor = new Televisor(
                     tamanoPantalla, resolucion, tipoPantalla, nombre, codigo,
                     alto, ancho, largo, color, precio, marca, WattsPorHora, control1
             );
 
-            
             (televisor.getControl()).setTelevisor(televisor);
 
             servicioElectrodomestico.adicionarElectrodomestico(televisor);

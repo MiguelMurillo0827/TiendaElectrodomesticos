@@ -1,4 +1,3 @@
-
 package com.mycompany.tiendaelectrodomesticos.view;
 
 import com.mycompany.tiendaelectrodomesticos.model.Electrodomestico;
@@ -8,17 +7,17 @@ import com.mycompany.tiendaelectrodomesticos.service.IServicioElectrodomestico;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
-
 public class ListLavadora extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ListLavadora.class.getName());
     private IServicioElectrodomestico servicioElectrodomestico;
+
     public ListLavadora(IServicioElectrodomestico servicioElectrodomestico) {
-        
+
         this.servicioElectrodomestico = servicioElectrodomestico;
         initComponents();
         setLocationRelativeTo(null);
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -160,14 +159,14 @@ public class ListLavadora extends javax.swing.JFrame {
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
         List<Lavadora> lavadoras = servicioElectrodomestico.listarLavadoras();
         DefaultTableModel model = (DefaultTableModel) jTableListLavadora.getModel();
-        
+
         model.setRowCount(0);
-        
-        for (Lavadora t: lavadoras){
-            
-            model.addRow(new Object[]{t.getCapacidadKg(),t.getConsumoAgua(), t.getNombre(), t.getCodigo(),t.getAlto(),t.getAncho(),t.getLargo(),t.getColor(),
-            t.getPrecio(),t.getMarca(),t.getWattsPorHora()});
-          
+
+        for (Lavadora t : lavadoras) {
+
+            model.addRow(new Object[]{t.getCapacidadKg(), t.getConsumoAgua(), t.getNombre(), t.getCodigo(), t.getAlto(), t.getAncho(), t.getLargo(), t.getColor(),
+                t.getPrecio(), t.getMarca(), t.getWattsPorHora()});
+
         }
     }//GEN-LAST:event_btnListarActionPerformed
 

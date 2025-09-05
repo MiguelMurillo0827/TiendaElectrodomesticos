@@ -5,7 +5,7 @@ import com.mycompany.tiendaelectrodomesticos.service.IServicioElectrodomestico;
 import javax.swing.JOptionPane;
 
 public class SearchTelevisor extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(SearchTelevisor.class.getName());
     private IServicioElectrodomestico servicioElectrodomestico;
 
@@ -14,7 +14,7 @@ public class SearchTelevisor extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -405,48 +405,46 @@ public class SearchTelevisor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        
+
         String codigo = txtCodigoTelevisorBuscar.getText();
-        
-        Televisor televisorEncontrado = servicioElectrodomestico.BuscarTelevisor(codigo);
-        
+
+        Televisor televisorEncontrado = (Televisor) servicioElectrodomestico.buscarElectrodomestico(codigo);
+
         if (televisorEncontrado != null) {
-            
+
             txtAltoTelevisor.setText(String.valueOf(televisorEncontrado.getAlto()));
-            
+
             txtAnchoTelevisor.setText(String.valueOf(televisorEncontrado.getAncho()));
-            
+
             txtCodigoTelevisorBuscar.setText(televisorEncontrado.getCodigo());
-            
+
             txtColorTelevisor.setText(televisorEncontrado.getColor());
-            
+
             txtLargoTelevisor.setText(String.valueOf(televisorEncontrado.getLargo()));
-            
+
             txtMarcaTelevisor.setText(televisorEncontrado.getMarca());
-            
+
             txtNombreTelevisor.setText(televisorEncontrado.getNombre());
-            
+
             txtPrecioTelevisor.setText(String.valueOf(televisorEncontrado.getPrecio()));
-            
+
             txtResolucionTelevisor.setText(televisorEncontrado.getResulucion());
-            
+
             txtTamanoPantallaTelevisor.setText(String.valueOf(televisorEncontrado.getTamanoPantalla()));
-            
+
             txtTipoPantallaTelevisor.setText(televisorEncontrado.getTipoPantalla());
-            
+
             txtWattsTelevisor.setText(String.valueOf(televisorEncontrado.getWattsPorHora()));
-            
+
             txtAlcanceControlTelevisor.setText(String.valueOf(televisorEncontrado.getControl().getAlcance()));
-            
+
             txtTipoControlTelevisor.setText(televisorEncontrado.getControl().getTipo());
-            
-            
-            
+
         } else {
-            
+
             JOptionPane.showMessageDialog(this, "Televisor no existe");
         }
-        
+
 
     }//GEN-LAST:event_btnBuscarActionPerformed
 
@@ -455,20 +453,19 @@ public class SearchTelevisor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
-        
+
         String codigo = txtCodigoTelevisorBuscar.getText();
-        Televisor televisorEncontrado = servicioElectrodomestico.BuscarTelevisor(codigo);
-        
-        if(televisorEncontrado != null){
-            
-        txtTotalConsumo.setText(String.valueOf(televisorEncontrado.calcularConsumoMensual(Double.parseDouble(txtCantidadDias.getText()))));
-        
-        }
-        
-        else{
-        
-        JOptionPane.showMessageDialog(this, "Busque primero un televisor");
-        
+        double dias = Double.parseDouble(txtCantidadDias.getText());
+        Televisor televisorEncontrado = (Televisor) servicioElectrodomestico.buscarElectrodomestico(codigo);
+
+        if (televisorEncontrado != null) {
+
+            txtTotalConsumo.setText(String.valueOf(televisorEncontrado.calcularConsumoMensual(dias)));
+
+        } else {
+
+            JOptionPane.showMessageDialog(this, "Busque primero un televisor");
+
         }
     }//GEN-LAST:event_btnCalcularActionPerformed
 

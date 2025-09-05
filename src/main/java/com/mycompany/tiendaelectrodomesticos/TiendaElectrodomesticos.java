@@ -4,6 +4,7 @@
 package com.mycompany.tiendaelectrodomesticos;
 
 import com.mycompany.tiendaelectrodomesticos.view.Principal;
+
 /**
  *
  * @author jamin
@@ -11,7 +12,7 @@ import com.mycompany.tiendaelectrodomesticos.view.Principal;
 public class TiendaElectrodomesticos {
 
     public static void main(String[] args) {
-        
+
         Principal gui = new Principal();
         gui.setVisible(true);
     }

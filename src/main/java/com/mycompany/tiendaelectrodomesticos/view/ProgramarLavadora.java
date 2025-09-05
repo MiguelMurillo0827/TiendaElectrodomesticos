@@ -344,7 +344,7 @@ public class ProgramarLavadora extends javax.swing.JFrame {
 
         String codigo = txtCodigoLavadoraBuscar.getText();
 
-        Lavadora lavadoraEncontrado = servicioElectrodomestico.BuscarLavadora(codigo);
+        Lavadora lavadoraEncontrado = (Lavadora) servicioElectrodomestico.buscarElectrodomestico(codigo);
 
         if (lavadoraEncontrado != null) {
 
@@ -382,18 +382,18 @@ public class ProgramarLavadora extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnProgramarApagadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProgramarApagadoActionPerformed
-        
+
         String hora = txtHoraApagado.getText();
-        Lavadora aProgramar = servicioElectrodomestico.BuscarLavadora(txtCodigoLavadoraBuscar.getText());
-        
+        Lavadora aProgramar = (Lavadora) servicioElectrodomestico.buscarElectrodomestico(txtCodigoLavadoraBuscar.getText());
+
         JOptionPane.showMessageDialog(this, aProgramar.programarApagadoAutomatico(hora));
-        
+
     }//GEN-LAST:event_btnProgramarApagadoActionPerformed
 
     private void btnProgramarInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProgramarInicioActionPerformed
         String hora = txtHoraInicio1.getText();
-        Lavadora aProgramar = servicioElectrodomestico.BuscarLavadora(txtCodigoLavadoraBuscar.getText());
-        
+        Lavadora aProgramar = (Lavadora) servicioElectrodomestico.buscarElectrodomestico(txtCodigoLavadoraBuscar.getText());
+
         JOptionPane.showMessageDialog(this, aProgramar.programarInicio(hora));
     }//GEN-LAST:event_btnProgramarInicioActionPerformed
 

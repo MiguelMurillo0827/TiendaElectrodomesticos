@@ -34,12 +34,12 @@ public class Lavadora extends Electrodomestico implements IProgramable {
 
     @Override
     public String programarInicio(String hora) {
-        
-        return ("La lavadora Iniciará su ciclo a las " +hora);
+
+        return ("La lavadora Iniciará su ciclo a las " + hora);
     }
 
     @Override
     public String programarApagadoAutomatico(String hora) {
-        return ("La lavadora se apagará a las " +hora);
+        return ("La lavadora se apagará a las " + hora);
     }
 }

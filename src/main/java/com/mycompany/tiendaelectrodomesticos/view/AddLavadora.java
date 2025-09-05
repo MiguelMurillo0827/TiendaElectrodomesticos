@@ -303,7 +303,6 @@ public class AddLavadora extends javax.swing.JFrame {
             servicioElectrodomestico.adicionarElectrodomestico(lavadora);
             System.out.println(lavadora);
 
-            
             JOptionPane.showMessageDialog(this, "Lavadora creada correctamente.");
 
         } catch (NumberFormatException e) {

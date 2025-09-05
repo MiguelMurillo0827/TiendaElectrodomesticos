@@ -9,6 +9,8 @@ package com.mycompany.tiendaelectrodomesticos.model;
  * @author juanm
  */
 public interface IProgramable {
+
     public String programarInicio(String hora);
+
     public String programarApagadoAutomatico(String hora);
 }

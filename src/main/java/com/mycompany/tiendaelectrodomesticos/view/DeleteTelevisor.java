@@ -5,16 +5,16 @@ import com.mycompany.tiendaelectrodomesticos.service.IServicioElectrodomestico;
 import javax.swing.JOptionPane;
 
 public class DeleteTelevisor extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DeleteTelevisor.class.getName());
     private IServicioElectrodomestico servicioElectrodomestico;
-    
+
     public DeleteTelevisor(IServicioElectrodomestico servicioElectrodomestico) {
         this.servicioElectrodomestico = servicioElectrodomestico;
         initComponents();
         setLocationRelativeTo(null);
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -354,46 +354,46 @@ public class DeleteTelevisor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        
-        if (txtCodigoTelevisorBuscar.getText().equals("")){
-        JOptionPane.showMessageDialog(this, "Por favor ingrese el código del televisor que desea eliminar");
-        return;
+
+        if (txtCodigoTelevisorBuscar.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese el código del televisor que desea eliminar");
+            return;
         }
- 
-        if (!servicioElectrodomestico.eliminarTelevisor(txtCodigoTelevisorBuscar.getText())){
-        
+
+        if (!servicioElectrodomestico.eliminarElectrodomestico(txtCodigoTelevisorBuscar.getText())) {
+
             JOptionPane.showMessageDialog(this, "Televisor no existe");
             return;
         }
-        
+
         txtAltoTelevisor.setText("");
-        
+
         txtAnchoTelevisor.setText("");
-        
+
         txtCodigoTelevisorBuscar.setText("");
-        
+
         txtColorTelevisor.setText("");
-        
+
         txtLargoTelevisor.setText("");
-        
+
         txtMarcaTelevisor.setText("");
-        
+
         txtNombreTelevisor.setText("");
-        
+
         txtPrecioTelevisor.setText("");
-        
+
         txtResolucionTelevisor.setText("");
-        
+
         txtTamanoPantallaTelevisor.setText("");
-        
+
         txtTipoPantallaTelevisor.setText("");
-        
+
         txtWattsTelevisor.setText("");
-        
+
         txtAlcanceControl.setText("");
-        
+
         txtTipoControl.setText("");
-        
+
         JOptionPane.showMessageDialog(this, "Televisor eliminado con éxito");
     }//GEN-LAST:event_btnEliminarActionPerformed
 
@@ -402,49 +402,48 @@ public class DeleteTelevisor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        
-         if (txtCodigoTelevisorBuscar.getText().equals("")){
-        JOptionPane.showMessageDialog(this, "Por favor ingrese el código del televisor que desea buscar");
-        return;
+
+        if (txtCodigoTelevisorBuscar.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese el código del televisor que desea buscar");
+            return;
         }
-        
+
         String codigo = txtCodigoTelevisorBuscar.getText();
-        
-        Televisor televisorEncontrado = servicioElectrodomestico.BuscarTelevisor(codigo);
-        
+
+        Televisor televisorEncontrado = (Televisor) servicioElectrodomestico.buscarElectrodomestico(codigo);
+
         if (televisorEncontrado != null) {
-            
+
             txtAltoTelevisor.setText(String.valueOf(televisorEncontrado.getAlto()));
-            
+
             txtAnchoTelevisor.setText(String.valueOf(televisorEncontrado.getAncho()));
-            
+
             txtCodigoTelevisorBuscar.setText(televisorEncontrado.getCodigo());
-            
+
             txtColorTelevisor.setText(televisorEncontrado.getColor());
-            
+
             txtLargoTelevisor.setText(String.valueOf(televisorEncontrado.getLargo()));
-            
+
             txtMarcaTelevisor.setText(televisorEncontrado.getMarca());
-            
+
             txtNombreTelevisor.setText(televisorEncontrado.getNombre());
-            
+
             txtPrecioTelevisor.setText(String.valueOf(televisorEncontrado.getPrecio()));
-            
+
             txtResolucionTelevisor.setText(televisorEncontrado.getResulucion());
-            
+
             txtTamanoPantallaTelevisor.setText(String.valueOf(televisorEncontrado.getTamanoPantalla()));
-            
+
             txtTipoPantallaTelevisor.setText(televisorEncontrado.getTipoPantalla());
-            
+
             txtWattsTelevisor.setText(String.valueOf(televisorEncontrado.getWattsPorHora()));
-            
+
             txtTipoControl.setText(televisorEncontrado.getControl().getTipo());
-            
-            txtAlcanceControl.setText (String.valueOf(televisorEncontrado.getControl().getAlcance()));
-            
-            
+
+            txtAlcanceControl.setText(String.valueOf(televisorEncontrado.getControl().getAlcance()));
+
         } else {
-            
+
             JOptionPane.showMessageDialog(this, "Televisor no existe");
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
