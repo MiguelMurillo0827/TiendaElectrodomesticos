@@ -3,6 +3,7 @@ package com.mycompany.tiendaelectrodomesticos.service;
 import com.mycompany.tiendaelectrodomesticos.model.Electrodomestico;
 import com.mycompany.tiendaelectrodomesticos.model.Lavadora;
 import com.mycompany.tiendaelectrodomesticos.model.Televisor;
+import com.mycompany.tiendaelectrodomesticos.view.IObserver;
 import java.util.List;
 
 public interface IServicioElectrodomestico {
@@ -25,4 +26,12 @@ public interface IServicioElectrodomestico {
     public void actualizarLavadora(String codigo, double capacidadLavadora, double cosumoAguaLavadora, String nombre, double alto, double ancho, double largo, String color, double precio, String marca, double wattsPorHora);
 
     public double calcularConsumo(Electrodomestico e, double dias);
+    
+    
+    public void addVentana(IObserver gui);
+    
+    public void deleteVentana(IObserver gui);
+    
+            
+            
 }

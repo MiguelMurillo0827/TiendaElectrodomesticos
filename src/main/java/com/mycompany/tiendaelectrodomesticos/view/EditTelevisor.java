@@ -2,17 +2,20 @@ package com.mycompany.tiendaelectrodomesticos.view;
 
 import com.mycompany.tiendaelectrodomesticos.model.Televisor;
 import com.mycompany.tiendaelectrodomesticos.service.IServicioElectrodomestico;
+import com.mycompany.tiendaelectrodomesticos.service.ServicioElectrodomestico;
 import javax.swing.JOptionPane;
 
-public class EditTelevisor extends javax.swing.JFrame {
+public class EditTelevisor extends javax.swing.JFrame implements IObserver {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(EditTelevisor.class.getName());
-    private IServicioElectrodomestico servicioElectrodomestico;
+    private IServicioElectrodomestico servicioElectrodomestico = ServicioElectrodomestico.getInstance();
 
     public EditTelevisor(IServicioElectrodomestico servicioElectrodomestico) {
         this.servicioElectrodomestico = servicioElectrodomestico;
         initComponents();
         setLocationRelativeTo(null);
+        this.servicioElectrodomestico.addVentana(this);
+
     }
 
     @SuppressWarnings("unchecked")
@@ -84,6 +87,11 @@ public class EditTelevisor extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("AddElectrodomestico");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -345,14 +353,12 @@ public class EditTelevisor extends javax.swing.JFrame {
             double WattsPorHora = Double.parseDouble(txtWattsTelevisor.getText());
             String tipoControl = txtTipoControl.getText();
             double alcanceControl = Double.parseDouble(txtAlcanceControl.getText());
-            
 
             servicioElectrodomestico.actualizarTelevisor(
                     codigo, tamanoPantalla, resolucion, tipoPantalla,
-                    nombre, alto, ancho, largo, color, precio, marca, WattsPorHora, tipoControl,alcanceControl
+                    nombre, alto, ancho, largo, color, precio, marca, WattsPorHora, tipoControl, alcanceControl
             );
 
-            
             JOptionPane.showMessageDialog(this, "Televisor actualizado correctamente.");
 
         } catch (NumberFormatException e) {
@@ -408,6 +414,10 @@ public class EditTelevisor extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        servicioElectrodomestico.deleteVentana(this);
+    }//GEN-LAST:event_formWindowClosing
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
@@ -453,4 +463,33 @@ public class EditTelevisor extends javax.swing.JFrame {
     private javax.swing.JTextField txtTipoPantallaTelevisor;
     private javax.swing.JTextField txtWattsTelevisor;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void huboCambio() {
+        String codigo = txtCodigoTelevisorBuscar.getText().trim();
+
+        if (codigo.isEmpty()) {
+            return;
+        }
+
+        Televisor televisor = (Televisor) servicioElectrodomestico.buscarElectrodomestico(codigo);
+
+        if (televisor != null) {
+      
+            txtAltoTelevisor.setText(String.valueOf(televisor.getAlto()));
+            txtAnchoTelevisor.setText(String.valueOf(televisor.getAncho()));
+            txtCodigoTelevisorBuscar.setText(televisor.getCodigo());
+            txtColorTelevisor.setText(televisor.getColor());
+            txtLargoTelevisor.setText(String.valueOf(televisor.getLargo()));
+            txtMarcaTelevisor.setText(televisor.getMarca());
+            txtNombreTelevisor.setText(televisor.getNombre());
+            txtPrecioTelevisor.setText(String.valueOf(televisor.getPrecio()));
+            txtResolucionTelevisor.setText(televisor.getResulucion());
+            txtTamanoPantallaTelevisor.setText(String.valueOf(televisor.getTamanoPantalla()));
+            txtTipoPantallaTelevisor.setText(televisor.getTipoPantalla());
+            txtWattsTelevisor.setText(String.valueOf(televisor.getWattsPorHora()));
+            txtAlcanceControl.setText(String.valueOf(televisor.getControl().getAlcance()));
+            txtTipoControl.setText(televisor.getControl().getTipo());
+        }
+    }
 }

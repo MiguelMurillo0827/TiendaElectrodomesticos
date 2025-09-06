@@ -2,17 +2,20 @@ package com.mycompany.tiendaelectrodomesticos.view;
 
 import com.mycompany.tiendaelectrodomesticos.model.Televisor;
 import com.mycompany.tiendaelectrodomesticos.service.IServicioElectrodomestico;
+import com.mycompany.tiendaelectrodomesticos.service.ServicioElectrodomestico;
 import javax.swing.JOptionPane;
 
-public class DeleteTelevisor extends javax.swing.JFrame {
+public class DeleteTelevisor extends javax.swing.JFrame implements IObserver{
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DeleteTelevisor.class.getName());
-    private IServicioElectrodomestico servicioElectrodomestico;
+        private IServicioElectrodomestico servicioElectrodomestico = ServicioElectrodomestico.getInstance();
+
     
     public DeleteTelevisor(IServicioElectrodomestico servicioElectrodomestico) {
         this.servicioElectrodomestico = servicioElectrodomestico;
         initComponents();
         setLocationRelativeTo(null);
+        this.servicioElectrodomestico.addVentana(this);
     }
     
     @SuppressWarnings("unchecked")
@@ -84,6 +87,11 @@ public class DeleteTelevisor extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("AddElectrodomestico");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -448,6 +456,11 @@ public class DeleteTelevisor extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        servicioElectrodomestico.deleteVentana(this);
+
+    }//GEN-LAST:event_formWindowClosing
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
@@ -493,4 +506,38 @@ public class DeleteTelevisor extends javax.swing.JFrame {
     private javax.swing.JTextField txtTipoPantallaTelevisor;
     private javax.swing.JTextField txtWattsTelevisor;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void huboCambio() {
+
+
+        txtAltoTelevisor.setText("");
+
+        txtAnchoTelevisor.setText("");
+
+        txtCodigoTelevisorBuscar.setText("");
+
+        txtColorTelevisor.setText("");
+
+        txtLargoTelevisor.setText("");
+
+        txtMarcaTelevisor.setText("");
+
+        txtNombreTelevisor.setText("");
+
+        txtPrecioTelevisor.setText("");
+
+        txtResolucionTelevisor.setText("");
+
+        txtTamanoPantallaTelevisor.setText("");
+
+        txtTipoPantallaTelevisor.setText("");
+
+        txtWattsTelevisor.setText("");
+
+        txtAlcanceControl.setText("");
+
+        txtTipoControl.setText("");
+    
+    }
 }

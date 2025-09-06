@@ -3,15 +3,16 @@ package com.mycompany.tiendaelectrodomesticos.service;
 import com.mycompany.tiendaelectrodomesticos.model.Televisor;
 import com.mycompany.tiendaelectrodomesticos.model.Lavadora;
 import com.mycompany.tiendaelectrodomesticos.model.Electrodomestico;
+import com.mycompany.tiendaelectrodomesticos.view.IObserver;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ServicioElectrodomestico implements IServicioElectrodomestico {
+public class ServicioElectrodomestico implements IServicioElectrodomestico{
     
     
     private static ServicioElectrodomestico servicioElectrodomestico;
-    
+    private List<IObserver> ventanasCambio = new ArrayList();
     
     private ServicioElectrodomestico(){}
     
@@ -24,11 +25,32 @@ public class ServicioElectrodomestico implements IServicioElectrodomestico {
         return servicioElectrodomestico;
     }
     
+    
+    
+    @Override
+    public void addVentana(IObserver gui) {
+        ventanasCambio.add(gui);
+        System.out.println("Num ventanas: " + ventanasCambio.size());
+    }
+    @Override
+    public void deleteVentana(IObserver gui){
+        ventanasCambio.remove(gui);
+    }
+   
+    
+    private void huboCambio() {
+        for (IObserver gui : ventanasCambio) {
+            System.out.println("Llamando Cambio desdde el servicio");
+            gui.huboCambio();
+        }
+    }
+    
 
     private List<Electrodomestico> electrodomesticos = new ArrayList<>();
 
     public void adicionarElectrodomestico(Electrodomestico elc) {
         electrodomesticos.add(elc);
+        huboCambio();
     }
 
     @Override
@@ -93,6 +115,8 @@ public class ServicioElectrodomestico implements IServicioElectrodomestico {
                 t.getControl().setTipo(tipoControl);
             }
         }
+        
+        huboCambio();
     }
 
     @Override
@@ -141,7 +165,9 @@ public class ServicioElectrodomestico implements IServicioElectrodomestico {
         if (e != null) {
 
             electrodomesticos.remove(e);
+            huboCambio();
             return true;
+            
         }
         return false;
     }

@@ -3,20 +3,25 @@ package com.mycompany.tiendaelectrodomesticos.view;
 import com.mycompany.tiendaelectrodomesticos.model.Electrodomestico;
 import com.mycompany.tiendaelectrodomesticos.model.Televisor;
 import com.mycompany.tiendaelectrodomesticos.service.IServicioElectrodomestico;
+import com.mycompany.tiendaelectrodomesticos.service.ServicioElectrodomestico;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class ListTelevisor extends javax.swing.JFrame {
+public class ListTelevisor extends javax.swing.JFrame implements IObserver{
+    
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ListTelevisor.class.getName());
-    private IServicioElectrodomestico servicioElectrodomestico;
+    private IServicioElectrodomestico servicioElectrodomestico = ServicioElectrodomestico.getInstance();
 
     public ListTelevisor(IServicioElectrodomestico servicioElectrodomestico) {
 
         this.servicioElectrodomestico = servicioElectrodomestico;
         initComponents();
         setLocationRelativeTo(null);
+        this.servicioElectrodomestico.addVentana(this);
+
+               
 
     }
 
@@ -59,6 +64,11 @@ public class ListTelevisor extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("AddElectrodomestico");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -185,6 +195,11 @@ public class ListTelevisor extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+       servicioElectrodomestico.deleteVentana(this);
+
+    }//GEN-LAST:event_formWindowClosing
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnListar;
@@ -200,4 +215,26 @@ public class ListTelevisor extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTableListTelevisor;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void huboCambio() {
+        List<Televisor> televisores = servicioElectrodomestico.listarTelevisores();
+        DefaultTableModel model = (DefaultTableModel) jTableListTelevisor.getModel();
+
+        model.setRowCount(0);
+
+        model.setRowCount(0);
+
+        if (televisores.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay televisores para listar.");
+            return;
+        }
+
+        for (Televisor t : televisores) {
+
+            model.addRow(new Object[]{t.getTamanoPantalla(), t.getResulucion(), t.getTipoPantalla(), t.getNombre(), t.getCodigo(), t.getAlto(), t.getAncho(), t.getLargo(), t.getColor(),
+                t.getPrecio(), t.getMarca(), t.getWattsPorHora(), t.getControl().getTipo(), t.getControl().getAlcance()});
+
+        }
+    }
 }
