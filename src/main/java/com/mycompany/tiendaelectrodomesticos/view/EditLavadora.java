@@ -2,17 +2,19 @@ package com.mycompany.tiendaelectrodomesticos.view;
 
 import com.mycompany.tiendaelectrodomesticos.model.Lavadora;
 import com.mycompany.tiendaelectrodomesticos.service.IServicioElectrodomestico;
+import com.mycompany.tiendaelectrodomesticos.service.ServicioElectrodomestico;
 import javax.swing.JOptionPane;
 
-public class EditLavadora extends javax.swing.JFrame {
+public class EditLavadora extends javax.swing.JFrame implements IObserver {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(EditLavadora.class.getName());
-    private IServicioElectrodomestico servicioElectrodomestico;
+    private IServicioElectrodomestico servicioElectrodomestico = ServicioElectrodomestico.getInstance();
 
     public EditLavadora(IServicioElectrodomestico servicioElectrodomestico) {
         this.servicioElectrodomestico = servicioElectrodomestico;
         initComponents();
         setLocationRelativeTo(null);
+        this.servicioElectrodomestico.addVentana(this);
     }
 
     @SuppressWarnings("unchecked")
@@ -303,7 +305,6 @@ public class EditLavadora extends javax.swing.JFrame {
                     alto, ancho, largo, color, precio, marca, WattsPorHora
             );
 
-           
             JOptionPane.showMessageDialog(this, "Lavadora actualizada correctamente.");
 
         } catch (NumberFormatException e) {
@@ -396,4 +397,31 @@ public class EditLavadora extends javax.swing.JFrame {
     private javax.swing.JTextField txtPrecioLavadora;
     private javax.swing.JTextField txtWattsLavadora;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void huboCambio() {
+
+        String codigo = txtCodigoLavadoraBuscar.getText().trim();
+
+        if (codigo.isEmpty()) {
+            return;
+        }
+
+        Lavadora lavadoraEncontrada = (Lavadora) servicioElectrodomestico.buscarElectrodomestico(codigo);
+
+        if (lavadoraEncontrada != null) {
+            // Refrescar los campos con la información actualizada
+            txtAltoLavadora.setText(String.valueOf(lavadoraEncontrada.getAlto()));
+            txtAnchoLavadora.setText(String.valueOf(lavadoraEncontrada.getAncho()));
+            txtLargoLavadora.setText(String.valueOf(lavadoraEncontrada.getLargo()));
+            txtCodigoLavadoraBuscar.setText(lavadoraEncontrada.getCodigo());
+            txtColorLavadora.setText(lavadoraEncontrada.getColor());
+            txtMarcaLavadora.setText(lavadoraEncontrada.getMarca());
+            txtNombreLavadora.setText(lavadoraEncontrada.getNombre());
+            txtPrecioLavadora.setText(String.valueOf(lavadoraEncontrada.getPrecio()));
+            txtCapacidadLavadora.setText(String.valueOf(lavadoraEncontrada.getCapacidadKg()));
+            txtConsumoAguaLavadora.setText(String.valueOf(lavadoraEncontrada.getConsumoAgua()));
+            txtWattsLavadora.setText(String.valueOf(lavadoraEncontrada.getWattsPorHora()));
+        }
+    }
 }

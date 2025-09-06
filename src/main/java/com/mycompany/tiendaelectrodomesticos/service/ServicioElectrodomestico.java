@@ -8,14 +8,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ServicioElectrodomestico implements IServicioElectrodomestico{
-    
-    
+public class ServicioElectrodomestico implements IServicioElectrodomestico {
+
     private static ServicioElectrodomestico servicioElectrodomestico;
     private List<IObserver> ventanasCambio = new ArrayList();
-    
-    private ServicioElectrodomestico(){}
-    
+
+    private ServicioElectrodomestico() {
+    }
+
     public synchronized static ServicioElectrodomestico getInstance() {
 
         if (servicioElectrodomestico == null) {
@@ -24,27 +24,24 @@ public class ServicioElectrodomestico implements IServicioElectrodomestico{
 
         return servicioElectrodomestico;
     }
-    
-    
-    
+
     @Override
     public void addVentana(IObserver gui) {
         ventanasCambio.add(gui);
         System.out.println("Num ventanas: " + ventanasCambio.size());
     }
+
     @Override
-    public void deleteVentana(IObserver gui){
+    public void deleteVentana(IObserver gui) {
         ventanasCambio.remove(gui);
     }
-   
-    
+
     private void huboCambio() {
         for (IObserver gui : ventanasCambio) {
             System.out.println("Llamando Cambio desdde el servicio");
             gui.huboCambio();
         }
     }
-    
 
     private List<Electrodomestico> electrodomesticos = new ArrayList<>();
 
@@ -115,7 +112,7 @@ public class ServicioElectrodomestico implements IServicioElectrodomestico{
                 t.getControl().setTipo(tipoControl);
             }
         }
-        
+
         huboCambio();
     }
 
@@ -140,6 +137,9 @@ public class ServicioElectrodomestico implements IServicioElectrodomestico{
                 t.setWattsPorHora(wattsPorHora);
             }
         }
+
+        huboCambio();
+
     }
 
     @Override
@@ -167,7 +167,7 @@ public class ServicioElectrodomestico implements IServicioElectrodomestico{
             electrodomesticos.remove(e);
             huboCambio();
             return true;
-            
+
         }
         return false;
     }

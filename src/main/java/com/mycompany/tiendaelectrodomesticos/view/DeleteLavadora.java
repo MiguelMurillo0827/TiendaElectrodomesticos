@@ -2,17 +2,19 @@ package com.mycompany.tiendaelectrodomesticos.view;
 
 import com.mycompany.tiendaelectrodomesticos.model.Lavadora;
 import com.mycompany.tiendaelectrodomesticos.service.IServicioElectrodomestico;
+import com.mycompany.tiendaelectrodomesticos.service.ServicioElectrodomestico;
 import javax.swing.JOptionPane;
 
-public class DeleteLavadora extends javax.swing.JFrame {
+public class DeleteLavadora extends javax.swing.JFrame implements IObserver {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DeleteLavadora.class.getName());
-    private IServicioElectrodomestico servicioElectrodomestico;
+    private IServicioElectrodomestico servicioElectrodomestico = ServicioElectrodomestico.getInstance();
 
     public DeleteLavadora(IServicioElectrodomestico servicioElectrodomestico) {
         this.servicioElectrodomestico = servicioElectrodomestico;
         initComponents();
         setLocationRelativeTo(null);
+        this.servicioElectrodomestico.addVentana(this);
     }
 
     @SuppressWarnings("unchecked")
@@ -335,7 +337,7 @@ public class DeleteLavadora extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-       String codigo = txtCodigoLavadoraBuscar.getText();
+        String codigo = txtCodigoLavadoraBuscar.getText();
 
         Lavadora lavadoraEncontrado = (Lavadora) servicioElectrodomestico.buscarElectrodomestico(codigo);
 
@@ -411,4 +413,29 @@ public class DeleteLavadora extends javax.swing.JFrame {
     private javax.swing.JTextField txtPrecioLavadora;
     private javax.swing.JTextField txtWattsLavadora;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void huboCambio() {
+        txtAltoLavadora.setText("");
+
+        txtAnchoLavadora.setText("");
+
+        txtCodigoLavadoraBuscar.setText("");
+
+        txtColorLavadora.setText("");
+
+        txtLargoLavadora.setText("");
+
+        txtMarcaLavadora.setText("");
+
+        txtNombreLavadora.setText("");
+
+        txtPrecioLavadora.setText("");
+
+        txtCapacidadLavadora.setText("");
+
+        txtConsumoAguaLavadora.setText("");
+
+        txtWattsLavadora.setText("");
+    }
 }
