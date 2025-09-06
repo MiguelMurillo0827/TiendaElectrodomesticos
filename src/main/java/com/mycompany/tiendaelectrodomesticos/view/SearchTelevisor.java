@@ -430,43 +430,41 @@ public class SearchTelevisor extends javax.swing.JFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         
         String codigo = txtCodigoTelevisorBuscar.getText();
-        
-        Televisor televisorEncontrado = servicioElectrodomestico.BuscarTelevisor(codigo);
-        
+
+        Televisor televisorEncontrado = (Televisor) servicioElectrodomestico.buscarElectrodomestico(codigo);
+
         if (televisorEncontrado != null) {
-            
+
             txtAltoTelevisor.setText(String.valueOf(televisorEncontrado.getAlto()));
-            
+
             txtAnchoTelevisor.setText(String.valueOf(televisorEncontrado.getAncho()));
-            
+
             txtCodigoTelevisorBuscar.setText(televisorEncontrado.getCodigo());
-            
+
             txtColorTelevisor.setText(televisorEncontrado.getColor());
-            
+
             txtLargoTelevisor.setText(String.valueOf(televisorEncontrado.getLargo()));
-            
+
             txtMarcaTelevisor.setText(televisorEncontrado.getMarca());
-            
+
             txtNombreTelevisor.setText(televisorEncontrado.getNombre());
-            
+
             txtPrecioTelevisor.setText(String.valueOf(televisorEncontrado.getPrecio()));
-            
+
             txtResolucionTelevisor.setText(televisorEncontrado.getResulucion());
-            
+
             txtTamanoPantallaTelevisor.setText(String.valueOf(televisorEncontrado.getTamanoPantalla()));
-            
+
             txtTipoPantallaTelevisor.setText(televisorEncontrado.getTipoPantalla());
-            
+
             txtWattsTelevisor.setText(String.valueOf(televisorEncontrado.getWattsPorHora()));
-            
+
             txtAlcanceControlTelevisor.setText(String.valueOf(televisorEncontrado.getControl().getAlcance()));
-            
+
             txtTipoControlTelevisor.setText(televisorEncontrado.getControl().getTipo());
-            
-            
-            
+
         } else {
-            
+
             JOptionPane.showMessageDialog(this, "Televisor no existe");
         }
         
@@ -480,18 +478,17 @@ public class SearchTelevisor extends javax.swing.JFrame {
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
         
         String codigo = txtCodigoTelevisorBuscar.getText();
-        Televisor televisorEncontrado = servicioElectrodomestico.BuscarTelevisor(codigo);
-        
-        if(televisorEncontrado != null){
-            
-        txtTotalConsumo.setText(String.valueOf(televisorEncontrado.calcularConsumoMensual(Double.parseDouble(txtCantidadDias.getText()))));
-        
-        }
-        
-        else{
-        
-        JOptionPane.showMessageDialog(this, "Busque primero un televisor");
-        
+        double dias = Double.parseDouble(txtCantidadDias.getText());
+        Televisor televisorEncontrado = (Televisor) servicioElectrodomestico.buscarElectrodomestico(codigo);
+
+        if (televisorEncontrado != null) {
+
+            txtTotalConsumo.setText(String.valueOf(televisorEncontrado.calcularConsumoMensual(dias)));
+
+        } else {
+
+            JOptionPane.showMessageDialog(this, "Busque primero un televisor");
+
         }
     }//GEN-LAST:event_btnCalcularActionPerformed
 

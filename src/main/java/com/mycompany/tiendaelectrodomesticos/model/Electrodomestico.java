@@ -5,6 +5,7 @@ package com.mycompany.tiendaelectrodomesticos.model;
  * @author jamin
  */
 public abstract class Electrodomestico {
+
     private String nombre;
     private String codigo;
     private double alto;
@@ -14,7 +15,6 @@ public abstract class Electrodomestico {
     private double precio;
     private String marca;
     private double wattsPorHora;
-    
 
     public Electrodomestico(String nombre, String codigo, double alto, double ancho, double largo, String color, double precio, String marca, double wattsPorHora) {
         this.nombre = nombre;
@@ -27,7 +27,6 @@ public abstract class Electrodomestico {
         this.marca = marca;
         this.wattsPorHora = wattsPorHora;
     }
-
 
     public String getNombre() {
         return nombre;
@@ -100,16 +99,16 @@ public abstract class Electrodomestico {
     public void setWattsPorHora(double wattsPorHora) {
         this.wattsPorHora = wattsPorHora;
     }
-    
-    public double calcularConsumoMensual(double dias){
-        return this.wattsPorHora*24*dias; //Calcular el total de vatios del electrodomestico teniendo en cuenta que esta encedido todo el día
-    }  
-    
-    @Override
-    public String toString(){
-        
-        return "nombre: "+ nombre + "codigo: " + codigo + "alto: " + alto + "ancho: " + ancho + "largo" 
-                + largo + "color: " + color + "precio: "+ precio + "marca: " + marca + "watts por hora: " + wattsPorHora;
+
+    public double calcularConsumoMensual(double dias) {
+        return this.wattsPorHora * 24 * dias; //Calcular el total de vatios del electrodomestico teniendo en cuenta que esta encedido todo el día
     }
-    
+
+    @Override
+    public String toString() {
+
+        return "nombre: " + nombre + "codigo: " + codigo + "alto: " + alto + "ancho: " + ancho + "largo"
+                + largo + "color: " + color + "precio: " + precio + "marca: " + marca + "watts por hora: " + wattsPorHora;
+    }
+
 }

@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 public class Principal extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Principal.class.getName());
-    IServicioElectrodomestico servicioElectrodomestico = new ServicioElectrodomestico();
+    IServicioElectrodomestico servicioElectrodomestico = ServicioElectrodomestico.getInstance();
     public Principal() {
         initComponents();
         setLocationRelativeTo(null);

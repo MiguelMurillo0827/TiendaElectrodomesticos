@@ -371,7 +371,7 @@ public class SearchLavadora extends javax.swing.JFrame {
 
         String codigo = txtCodigoLavadoraBuscar.getText();
 
-        Lavadora lavadoraEncontrado = servicioElectrodomestico.BuscarLavadora(codigo);
+        Lavadora lavadoraEncontrado = (Lavadora) servicioElectrodomestico.buscarElectrodomestico(codigo);
 
         if (lavadoraEncontrado != null) {
 
@@ -410,18 +410,17 @@ public class SearchLavadora extends javax.swing.JFrame {
 
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
         String codigo = txtCodigoLavadoraBuscar.getText();
-        Lavadora lavadoraEncontrado = servicioElectrodomestico.BuscarLavadora(codigo);
-        
-        if(lavadoraEncontrado != null){
-            
-        txtTotalConsumo.setText(String.valueOf(lavadoraEncontrado.calcularConsumoMensual(Double.parseDouble(txtCantidadDias.getText()))));
-        
-        }
-        
-        else{
-        
-        JOptionPane.showMessageDialog(this, "Busque primero una lavadora");
-        
+        double dias = Double.parseDouble(txtCantidadDias.getText());
+        Lavadora lavadoraEncontrada = (Lavadora) servicioElectrodomestico.buscarElectrodomestico(codigo);
+
+        if (lavadoraEncontrada != null) {
+
+            txtTotalConsumo.setText(String.valueOf(lavadoraEncontrada.calcularConsumoMensual(dias)));
+
+        } else {
+
+            JOptionPane.showMessageDialog(this, "Busque primero un televisor");
+
         }
     }//GEN-LAST:event_btnCalcularActionPerformed
 

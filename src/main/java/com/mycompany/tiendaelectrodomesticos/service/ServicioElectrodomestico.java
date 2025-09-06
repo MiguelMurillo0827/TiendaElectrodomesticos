@@ -8,16 +8,30 @@ import java.util.Collections;
 import java.util.List;
 
 public class ServicioElectrodomestico implements IServicioElectrodomestico {
+    
+    
+    private static ServicioElectrodomestico servicioElectrodomestico;
+    
+    
+    private ServicioElectrodomestico(){}
+    
+    public synchronized static ServicioElectrodomestico getInstance() {
+
+        if (servicioElectrodomestico == null) {
+            servicioElectrodomestico = new ServicioElectrodomestico();
+        }
+
+        return servicioElectrodomestico;
+    }
+    
 
     private List<Electrodomestico> electrodomesticos = new ArrayList<>();
 
     public void adicionarElectrodomestico(Electrodomestico elc) {
         electrodomesticos.add(elc);
     }
-    
-    
-    
 
+    @Override
     public Electrodomestico buscarElectrodomestico(String codigo) {
         for (Electrodomestico elc : electrodomesticos) {
             if (elc.getCodigo().equals(codigo)) {
@@ -54,55 +68,6 @@ public class ServicioElectrodomestico implements IServicioElectrodomestico {
     }
 
     @Override
-    public Televisor BuscarTelevisor(String codigo) {
-
-        for (Electrodomestico e : electrodomesticos) {
-
-            if (e instanceof Televisor) {
-                if (e.getCodigo().equals(codigo)) {
-
-                    return (Televisor) e;
-                }
-
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public Lavadora BuscarLavadora(String codigo) {
-
-        for (Electrodomestico e : electrodomesticos) {
-
-            if (e instanceof Lavadora) {
-                if (e.getCodigo().equals(codigo)) {
-
-                    return (Lavadora) e;
-                }
-
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public boolean eliminarTelevisor(String codigo) {
-        
-        Televisor t = (Televisor) buscarElectrodomestico(codigo);
-        if (t !=null){
-        electrodomesticos.remove(t);
-        return true;
-        }
-        return false;
-    }
-
-    @Override
-    public void eliminarLavadora(String codigo) {
-        Lavadora l = (Lavadora) buscarElectrodomestico(codigo);
-        electrodomesticos.remove(l);
-    }
-
-    @Override
     public void actualizarTelevisor(String codigo, double tamanoPantalla, String resulucion, String tipoPantalla, String nombre,
             double alto, double ancho, double largo, String color, double precio, String marca, double wattsPorHora, String tipoControl, double alcance) {
 
@@ -123,7 +88,7 @@ public class ServicioElectrodomestico implements IServicioElectrodomestico {
                 t.setTamanoPantalla(tamanoPantalla);
                 t.setTipoPantalla(tipoPantalla);
                 t.setWattsPorHora(wattsPorHora);
-                
+
                 t.getControl().setAlcance(alcance);
                 t.getControl().setTipo(tipoControl);
             }
@@ -131,7 +96,7 @@ public class ServicioElectrodomestico implements IServicioElectrodomestico {
     }
 
     @Override
-    public void actualizarLavadora(String codigo, double capacidadLavadora, double cosumoAguaLavadora,  String nombre, double alto, double ancho, double largo, String color, double precio, String marca, double wattsPorHora) {
+    public void actualizarLavadora(String codigo, double capacidadLavadora, double cosumoAguaLavadora, String nombre, double alto, double ancho, double largo, String color, double precio, String marca, double wattsPorHora) {
 
         List<Lavadora> lavadoras = listarLavadoras();
 
@@ -156,11 +121,29 @@ public class ServicioElectrodomestico implements IServicioElectrodomestico {
     @Override
     public boolean verificarNoRepetido(String codigo) {
         for (Electrodomestico e : electrodomesticos) {
-        if (e.getCodigo().equalsIgnoreCase(codigo)) {
+            if (e.getCodigo().equalsIgnoreCase(codigo)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public double calcularConsumo(Electrodomestico e, double dias) {
+        return e.calcularConsumoMensual(dias);
+    }
+
+    @Override
+    public boolean eliminarElectrodomestico(String codigo) {
+
+        Electrodomestico e = (Electrodomestico) buscarElectrodomestico(codigo);
+
+        if (e != null) {
+
+            electrodomesticos.remove(e);
             return true;
         }
-    }
-    return false;
+        return false;
     }
 
 }

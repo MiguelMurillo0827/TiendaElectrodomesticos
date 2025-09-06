@@ -305,7 +305,7 @@ public class DeleteLavadora extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        servicioElectrodomestico.eliminarLavadora(txtCodigoLavadoraBuscar.getText());
+        servicioElectrodomestico.eliminarElectrodomestico(txtCodigoLavadoraBuscar.getText());
         JOptionPane.showMessageDialog(this, "Lavadora eliminada con éxito");
         txtAltoLavadora.setText("");
 
@@ -324,7 +324,7 @@ public class DeleteLavadora extends javax.swing.JFrame {
         txtPrecioLavadora.setText("");
 
         txtCapacidadLavadora.setText("");
-        
+
         txtConsumoAguaLavadora.setText("");
 
         txtWattsLavadora.setText("");
@@ -335,9 +335,9 @@ public class DeleteLavadora extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        String codigo = txtCodigoLavadoraBuscar.getText();
+       String codigo = txtCodigoLavadoraBuscar.getText();
 
-        Lavadora lavadoraEncontrado = servicioElectrodomestico.BuscarLavadora(codigo);
+        Lavadora lavadoraEncontrado = (Lavadora) servicioElectrodomestico.buscarElectrodomestico(codigo);
 
         if (lavadoraEncontrado != null) {
 
@@ -364,7 +364,7 @@ public class DeleteLavadora extends javax.swing.JFrame {
             txtWattsLavadora.setText(String.valueOf(lavadoraEncontrado.getWattsPorHora()));
         } else {
 
-            JOptionPane.showMessageDialog(this, "Lavadora no existe");
+            JOptionPane.showMessageDialog(this, "Televisor no existe");
         }
 
 

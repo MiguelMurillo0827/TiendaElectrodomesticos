@@ -15,8 +15,6 @@ public class Televisor extends Electrodomestico {
     private String tipoPantalla;
     private ControlRemoto control;
 
-    
-    
     public Televisor(double tamanoPantalla, String resulucion, String tipoPantalla, String nombre, String codigo, double alto, double ancho, double largo, String color, double precio, String marca, double wattsPorHora, ControlRemoto control) {
         super(nombre, codigo, alto, ancho, largo, color, precio, marca, wattsPorHora);
         this.tamanoPantalla = tamanoPantalla;
@@ -32,6 +30,7 @@ public class Televisor extends Electrodomestico {
     public void setControl(ControlRemoto control) {
         this.control = control;
     }
+
     public double getTamanoPantalla() {
         return tamanoPantalla;
     }
@@ -55,11 +54,10 @@ public class Televisor extends Electrodomestico {
     public void setTipoPantalla(String tipoPantalla) {
         this.tipoPantalla = tipoPantalla;
     }
-    
+
     @Override
-  public double calcularConsumoMensual(double dias){
-    return getWattsPorHora()*8*dias; //Calcular el total de vatios del electrodomestico teniendo en cuenta las horas de uso de horas al día y al mes 
-}        
-    
-    
+    public double calcularConsumoMensual(double dias) {
+        return getWattsPorHora() * 8 * dias; //Calcular el total de vatios del electrodomestico teniendo en cuenta las horas de uso de horas al día y al mes 
+    }
+
 }

@@ -344,7 +344,7 @@ public class ProgramarLavadora extends javax.swing.JFrame {
 
         String codigo = txtCodigoLavadoraBuscar.getText();
 
-        Lavadora lavadoraEncontrado = servicioElectrodomestico.BuscarLavadora(codigo);
+        Lavadora lavadoraEncontrado = (Lavadora) servicioElectrodomestico.buscarElectrodomestico(codigo);
 
         if (lavadoraEncontrado != null) {
 
@@ -384,13 +384,8 @@ public class ProgramarLavadora extends javax.swing.JFrame {
     private void btnProgramarApagadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProgramarApagadoActionPerformed
 
         String hora = txtHoraApagado.getText();
+        Lavadora aProgramar = (Lavadora) servicioElectrodomestico.buscarElectrodomestico(txtCodigoLavadoraBuscar.getText());
 
-        if (!hora.matches("([01]\\d|2[0-3]):[0-5]\\d")) {
-            JOptionPane.showMessageDialog(this, "Formato inválido. Use HH:mm (ejemplo: 08:30, 23:45)", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        Lavadora aProgramar = servicioElectrodomestico.BuscarLavadora(txtCodigoLavadoraBuscar.getText());
         JOptionPane.showMessageDialog(this, aProgramar.programarApagadoAutomatico(hora));
 
 
@@ -398,14 +393,8 @@ public class ProgramarLavadora extends javax.swing.JFrame {
 
     private void btnProgramarInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProgramarInicioActionPerformed
         String hora = txtHoraInicio.getText();
+        Lavadora aProgramar = (Lavadora) servicioElectrodomestico.buscarElectrodomestico(txtCodigoLavadoraBuscar.getText());
 
-
-        if (!hora.matches("([01]\\d|2[0-3]):[0-5]\\d")) {
-            JOptionPane.showMessageDialog(this, "Formato inválido. Ingrese la hora como HH:mm (ejemplo: 08:30, 23:45)", "Error", JOptionPane.ERROR_MESSAGE);
-            return; 
-        }
-
-        Lavadora aProgramar = servicioElectrodomestico.BuscarLavadora(txtCodigoLavadoraBuscar.getText());
         JOptionPane.showMessageDialog(this, aProgramar.programarInicio(hora));
 
     }//GEN-LAST:event_btnProgramarInicioActionPerformed

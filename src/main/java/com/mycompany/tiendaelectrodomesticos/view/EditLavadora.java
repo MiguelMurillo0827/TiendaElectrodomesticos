@@ -322,7 +322,7 @@ public class EditLavadora extends javax.swing.JFrame {
 
         String codigo = txtCodigoLavadoraBuscar.getText();
 
-        Lavadora lavadoraEncontrado = servicioElectrodomestico.BuscarLavadora(codigo);
+        Lavadora lavadoraEncontrado = (Lavadora) servicioElectrodomestico.buscarElectrodomestico(codigo);
 
         if (lavadoraEncontrado != null) {
 
