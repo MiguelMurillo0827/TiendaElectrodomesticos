@@ -22,6 +22,7 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu5 = new javax.swing.JMenu();
+        jMenuItem7 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMenuItemAddTelevisor = new javax.swing.JMenuItem();
@@ -46,6 +47,15 @@ public class Principal extends javax.swing.JFrame {
         jMenu5.setText("Archivo");
         jMenu5.setAutoscrolls(true);
         jMenu5.setVerifyInputWhenFocusTarget(false);
+
+        jMenuItem7.setText("Salir");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem7);
+
         jMenuBar1.add(jMenu5);
 
         jMenu1.setText("Producto");
@@ -242,6 +252,10 @@ public class Principal extends javax.swing.JFrame {
         gui.setVisible(true);
     }//GEN-LAST:event_jMenuItemProgramarLavadoraActionPerformed
 
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -255,6 +269,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItemAddLavadora;
     private javax.swing.JMenuItem jMenuItemAddTelevisor;
     private javax.swing.JMenuItem jMenuItemDeleteLavadora;

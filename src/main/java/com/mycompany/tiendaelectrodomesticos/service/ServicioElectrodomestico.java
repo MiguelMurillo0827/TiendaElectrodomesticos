@@ -143,13 +143,15 @@ public class ServicioElectrodomestico implements IServicioElectrodomestico {
     }
 
     @Override
-    public boolean verificarNoRepetido(String codigo) {
+    public boolean verificarNoRepetido(Electrodomestico nuevo) {
         for (Electrodomestico e : electrodomesticos) {
-            if (e.getCodigo().equalsIgnoreCase(codigo)) {
-                return true;
+            // Compara tipo (clase) + código
+            if (e.getClass().equals(nuevo.getClass())
+                    && e.getCodigo().equalsIgnoreCase(nuevo.getCodigo())) {
+                return true; // Repetido dentro del mismo tipo
             }
         }
-        return false;
+        return false; // No está repetido
     }
 
     @Override

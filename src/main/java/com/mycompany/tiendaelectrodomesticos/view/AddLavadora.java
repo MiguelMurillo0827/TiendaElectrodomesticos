@@ -300,15 +300,17 @@ public class AddLavadora extends javax.swing.JFrame {
             String marca = txtMarcaLavadora.getText();
             double WattsPorHora = Double.parseDouble(txtWattsLavadora.getText());
 
-            if (servicioElectrodomestico.verificarNoRepetido(codigo)) {
-                JOptionPane.showMessageDialog(this, "Ya existe una lavadora con el código: " + codigo);
-                return;
-            }
-
+            
             Lavadora lavadora = new Lavadora(
                     capacidadLavadora, consumoAguaLavadora, nombre, codigo,
                     alto, ancho, largo, color, precio, marca, WattsPorHora
             );
+            
+            if (servicioElectrodomestico.verificarNoRepetido(lavadora)) {
+                JOptionPane.showMessageDialog(this, "Ya existe una lavadora con el código: " + codigo);
+                return;
+            }
+
             servicioElectrodomestico.adicionarElectrodomestico(lavadora);
             System.out.println(lavadora);
 

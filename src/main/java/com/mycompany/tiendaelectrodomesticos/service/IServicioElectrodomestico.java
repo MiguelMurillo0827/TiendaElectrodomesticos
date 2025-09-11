@@ -10,7 +10,7 @@ public interface IServicioElectrodomestico {
 
     public void adicionarElectrodomestico(Electrodomestico electrodomestico);
 
-    public boolean verificarNoRepetido(String codigo);
+    public boolean verificarNoRepetido(Electrodomestico nuevo);
 
     public List<Televisor> listarTelevisores();
 
